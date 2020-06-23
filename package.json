@@ -11,7 +11,9 @@
   },
   "dependencies": {
     "@vant/weapp": "^1.3.2",
+    "cors": "^2.8.5",
     "element-ui": "^2.13.2",
+    "mongoose": "^5.9.20",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
   },
