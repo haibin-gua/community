@@ -15,7 +15,7 @@
       <div class="admin">账号：<input type="text" placeholder="请输入账号"></div>
       <div class="password">密码：<input type="text" placeholder="请输入密码"></div>
       <div class="btn-box">
-        <el-button type="success" plain class="left">确认注册</el-button>
+        <el-button type="success" plain class="left" @click="registerclick()">确认注册</el-button>
         <el-button type="info" class="right" @click="back">返回</el-button>
       </div>
     </form>
@@ -29,7 +29,11 @@ export default {
   data(){
     return{
       show:true,
-      conceal:false
+      conceal:false,
+      admin:[{
+        username:'',
+        password:''
+      }]
     }
   },
   methods:{

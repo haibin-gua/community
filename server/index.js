@@ -8,13 +8,18 @@ mongoose.connect('mongodb://localhost:27017/Login',{  //创建数据库
     useFindAndModify:true,
     useCreateIndex:true
 })
-const login = mongoose.model('Login',new mongoose.Schema({  //创建数据库模型
+const Login = mongoose.model('Login',new mongoose.Schema({  //创建数据库模型
     username:{type:String},
     password:{type:String}
 }))
 
 app.get('/',async(req,res)=>{
     res.send('index')
+})
+
+app.post('/api/register',async(req,res)=>{
+    const register = await Login.create(req.body)
+    req.send(register)
 })
 
 app.listen('3000',()=>{
