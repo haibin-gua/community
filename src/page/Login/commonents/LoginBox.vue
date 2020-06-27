@@ -3,7 +3,7 @@
   <div class="login-box" v-if="show">
     <form>
       <div class="admin">账号：<input type="text" placeholder="请输入账号"></div>
-      <div class="password">密码：<input type="text" placeholder="请输入密码"></div>
+      <div class="password">密码：<input type="password" placeholder="请输入密码"></div>
       <div class="btn-box">
         <el-button type="success" plain class="left">登陆</el-button>
         <el-button type="info" class="right" @click="register">注册</el-button>
@@ -12,8 +12,8 @@
   </div>
   <div class="register-box" v-if="conceal">
     <form>
-      <div class="admin">账号：<input type="text" placeholder="请输入账号"></div>
-      <div class="password">密码：<input type="text" placeholder="请输入密码"></div>
+      <div class="admin">账号：<input type="text" placeholder="请输入账号" v-model="admin.username"></div>
+      <div class="password">密码：<input type="password" placeholder="请输入密码" v-model="admin.password"></div>
       <div class="btn-box">
         <el-button type="success" plain class="left" @click="registerclick()">确认注册</el-button>
         <el-button type="info" class="right" @click="back">返回</el-button>
@@ -30,10 +30,10 @@ export default {
     return{
       show:true,
       conceal:false,
-      admin:[{
+      admin:{
         username:'',
         password:''
-      }]
+      }
     }
   },
   methods:{
@@ -44,6 +44,22 @@ export default {
     back(){
       this.show = true;
       this.conceal = false;
+    },
+    registerclick(){
+        if(this.admin.username =="" || this.admin.password ==""){
+          this.$alert('请输入用户名和密码',{
+          confirmButtonText: '确定'
+        });
+        }else{
+          this.$http.post('register',this.admin).then(res=>{
+            this.$message({
+            message: '注册成功',
+            type: 'success'
+          });
+          this.show = true;
+          this.conceal = false;
+          })
+        }
     }
   }
 }

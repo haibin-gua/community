@@ -19,7 +19,7 @@ app.get('/',async(req,res)=>{
 
 app.post('/api/register',async(req,res)=>{
     const register = await Login.create(req.body)
-    req.send(register)
+    res.send(register)
 })
 
 app.listen('3000',()=>{

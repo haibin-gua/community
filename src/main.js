@@ -9,8 +9,8 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import axios from 'axios'
 
-Vue.prototype.$http = axios .create({
-  baseURL:'http://loaclhost:3000/api'
+Vue.prototype.$http = axios.create({
+  baseURL:'http://localhost:3000/api'
 })
 
 Vue.use(ElementUI);
